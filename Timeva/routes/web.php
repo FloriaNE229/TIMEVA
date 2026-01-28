@@ -1,0 +1,30 @@
+<?php
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\UserController;
+
+
+// Home
+Route::view('/', 'welcome')->name('home');
+
+// Auth
+Route::get('/register', [AuthController::class, 'showRegister'])->name('register');
+Route::post('/register', [AuthController::class, 'register'])->name('register.store');
+
+Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
+Route::post('/login', [AuthController::class, 'login'])->name('login.store');
+
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+// Produits
+Route::get('/watches', [ProductController::class, 'watches'])->name('products.watches');
+Route::get('/glasses', [ProductController::class, 'glasses'])->name('products.glasses');
+
+// Panier
+Route::get('/cart', [CartController::class, 'index'])->name('cart');
+
+// Utilisateur
+Route::get('/account', [UserController::class, 'account'])->name('account');
+Route::get('/orders', [UserController::class, 'orders'])->name('orders');

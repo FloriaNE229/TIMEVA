@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
+use App\Models\Profil;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
@@ -31,10 +32,15 @@ class UserController extends Controller
 
         $user = Auth::user();
         
-        $profil = $user->profil ?? new Profil(['user_id' => $user->id, 'id' => Str::uuid()]);
-        
+    
+        // On récupère le profil ou on en crée un nouveau avec un UUID
+        $profil = $user->profil ?? new Profil([
+            'user_id' => $user->id, 
+            'id' => (string) Str::uuid()
+        ]);
+
         $profil->fill($validated);
-        $profil->date_modification = now();
+        
         $profil->save();
 
         return back()->with('success', 'Profil mis à jour avec succès');

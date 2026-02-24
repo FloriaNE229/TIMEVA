@@ -40,26 +40,10 @@ class AuthController extends Controller
 
         // Création utilisateur
         $user = User::create([
-            'prenom' => $validated['prenom'] ?? null,
-            'nom' => $validated['nom'] ?? null,
+            'prenom'   => $validated['prenom'] ?? null,
+            'nom'      => $validated['nom'] ?? null,
             'email' => $validated['email'],
             'password' => Hash::make($validated['password']),
-        ]);
-
-        // Création profil
-        Profil::create([
-            'id' => Str::uuid(),
-            'user_id' => $user->id,
-            'prenom' => $validated['prenom'] ?? null,
-            'nom' => $validated['nom'] ?? null,
-            'tel' => $validated['tel'] ?? null,
-            'adresse' => $validated['adresse'] ?? null,
-            'ville' => $validated['ville'] ?? null,
-            'code_postal' => $validated['code_postal'] ?? null,
-            'pays' => $validated['pays'] ?? 'France',
-            'role' => 'user',
-            'date_creation' => now(),
-            'date_modification' => now(),
         ]);
 
         Auth::login($user);

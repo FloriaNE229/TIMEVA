@@ -16,7 +16,7 @@
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         @forelse($produits as $produit)
         <div class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition-shadow group">
-            <a href="{{ route('products.show', $produit) }}" class="block">
+            <a href="{{ route('products.watches', $produit) }}" class="block">
                 <div class="aspect-square bg-gray-100 flex items-center justify-center p-8 group-hover:bg-gray-200 transition-colors">
                     <img src="{{ $produit->img ?? asset('images/placeholder-watch.jpg') }}" 
                          alt="{{ $produit->nom }}" 

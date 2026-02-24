@@ -16,7 +16,7 @@
         @forelse($produits as $produit)
         <!-- Produit -->
         <div class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition-shadow">
-            <a href="{{ route('products.show', $produit) }}" class="block">
+            <a href="{{ route('products.glasses', $produit) }}" class="block">
                 <div class="aspect-square bg-gray-100 flex items-center justify-center p-8">
                     <img src="{{ $produit->img ?? asset('images/placeholder.jpg') }}" 
                          alt="{{ $produit->nom }}" 
